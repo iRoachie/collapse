@@ -114,6 +114,8 @@ function Accordion<T>({
         ref={collapsible}
         extraData={activeSections}
         data={sections}
+        scrollEnabled={false}
+        showsVerticalScrollIndicator={false}
         renderItem={({ item, index }) => (
           <View style={sectionContainerStyle}>
             {renderSectionTitle({
