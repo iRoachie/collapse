@@ -1,4 +1,6 @@
-import Collapsible, { CollapsibleProps } from './Collapsible';
+import Collapsible from './Collapsible';
 import Accordion from './Accordion';
 
-export { Collapsible, CollapsibleProps, Accordion };
+export { Collapsible, Accordion };
+export * from './Accordion';
+export * from './Collapsible';
