@@ -5,7 +5,7 @@ import {
   StyleProp,
   ViewStyle,
   StyleSheet,
-  Easing
+  Easing,
 } from 'react-native';
 
 export interface CollapsibleProps {
@@ -29,7 +29,7 @@ const Collapsible: React.FC<CollapsibleProps> = ({
   easing = Easing.out(Easing.cubic),
   children,
   style,
-  onAnimationEnd
+  onAnimationEnd,
 }) => {
   const contentHeight = useRef(0);
   const [measured, setMeasured] = useState(false);
@@ -40,7 +40,7 @@ const Collapsible: React.FC<CollapsibleProps> = ({
       Animated.timing(collapseHeight, {
         toValue: collapsed ? collapsedHeight : contentHeight.current,
         duration,
-        easing
+        easing,
       }).start(onAnimationEnd);
     }
   }, [collapsed]);
@@ -65,10 +65,10 @@ const Collapsible: React.FC<CollapsibleProps> = ({
             {
               translateY: collapseHeight.interpolate({
                 inputRange: [0, contentHeight.current],
-                outputRange: [contentHeight.current / -2, 0]
-              })
-            }
-          ]
+                outputRange: [contentHeight.current / -2, 0],
+              }),
+            },
+          ],
         };
       case 'bottom':
         return {
@@ -76,10 +76,10 @@ const Collapsible: React.FC<CollapsibleProps> = ({
             {
               translateY: collapseHeight.interpolate({
                 inputRange: [0, contentHeight.current],
-                outputRange: [-contentHeight.current, 0]
-              })
-            }
-          ]
+                outputRange: [-contentHeight.current, 0],
+              }),
+            },
+          ],
         };
     }
   };
@@ -89,9 +89,9 @@ const Collapsible: React.FC<CollapsibleProps> = ({
       style={[
         styles.container,
         {
-          height: measured ? collapseHeight : 'auto'
+          height: measured ? collapseHeight : 'auto',
         },
-        style
+        style,
       ]}
       accessibilityStates={[collapsed ? 'collapsed' : 'expanded']}
       pointerEvents={!enablePointerEvents && collapsed ? 'none' : 'auto'}
@@ -100,8 +100,8 @@ const Collapsible: React.FC<CollapsibleProps> = ({
         style={[
           alignStyles(),
           {
-            position: measured ? 'relative' : 'absolute'
-          }
+            position: measured ? 'relative' : 'absolute',
+          },
         ]}
         onLayout={measureChildren}
       >
@@ -113,8 +113,8 @@ const Collapsible: React.FC<CollapsibleProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    overflow: 'hidden'
-  }
+    overflow: 'hidden',
+  },
 });
 
 export default Collapsible;
